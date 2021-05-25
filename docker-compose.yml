@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+    react-app:
+        build:
+            context: react_app
+            dockerfile: Dockerfile
+        working_dir: /app
+        volumes:
+            - ${STREAMS_FOLDER}:/usr/share/nginx/html/streams/
+        environment:
+            - NODE_ENV=${NODE_ENV}
+    api:
+        build:
+            context: api
+            dockerfile: Dockerfile
+        working_dir: /app
+        volumes:
+           - ${STREAMS_FOLDER}:/app/public/streams/
+        environment:
+            - NODE_ENV=${NODE_ENV}
+    nginx:
+        build:
+            context: nginx
+            dockerfile: Dockerfile
+        ports: 
+            - ${PORT}:80 
+        command: ["nginx", "-g", "daemon off;"]
+        depends_on: 
+            - api
+            - react-app
