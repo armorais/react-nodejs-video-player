@@ -51,6 +51,7 @@ export default function Player() {
                         volume={1}
                         muted={true}
                         controls={true}
+                        playing= {true}
                         width='80%'
                         height='80%' />
           </ div>
