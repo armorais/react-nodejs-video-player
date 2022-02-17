@@ -6,7 +6,7 @@ COPY . /app
 RUN npm ci --loglevel verbose
 RUN npm run build
 
-FROM nginx:1.16.0-alpine
+FROM nginx:1.20.2-alpine
 COPY --from=build /app/build /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
