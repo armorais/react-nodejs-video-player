@@ -25,7 +25,7 @@ export default function Player() {
     function onSelectSrc(event) {
       let video = event.target.value;
       if (!video.includes("https")) {
-        video = 'streams/' +video + '/playlist.m3u8';
+        video = 'hls/static/streams/' + video + '/playlist.m3u8';
       }
     
       setSrc(video);
