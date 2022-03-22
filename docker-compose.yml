@@ -13,8 +13,6 @@ services:
         build:
             context: api
             dockerfile: Dockerfile
-        stdin_open: true
-        tty: true
         working_dir: /app
         volumes:
             - ${STREAMS_FOLDER}:/streams/:ro 
