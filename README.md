@@ -1,12 +1,12 @@
-# react-nodejs-video-player
+# react-video-player
 Simple experimental web app to play video output from computer video apps
 
 ## Running
 
 
 ```bash
-git clone https://github.com/armorais/react-nodejs-video-player.git
-cd react-nodejs-video-player
+git clone https://github.com/armorais/react-video-player.git
+cd react-video-player
 docker-compose up -d
 ```
 
