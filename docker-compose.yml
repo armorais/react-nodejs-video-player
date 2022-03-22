@@ -8,15 +8,19 @@ services:
         working_dir: /app
         environment:
             - NODE_ENV=production
+        profiles: ["frontend"]
     api:
         build:
             context: api
             dockerfile: Dockerfile
+        stdin_open: true
+        tty: true
         working_dir: /app
         volumes:
-            - ${STREAMS_FOLDER}:/app/public/streams/
+            - ${STREAMS_FOLDER}:/streams/:ro 
         environment:
-            - NODE_ENV=production
+            - ROOT_DIR=/streams/
+        profiles: ["backend"]
     nginx:
         image: nginx:1.20.2-alpine
         ports: 
@@ -28,3 +32,6 @@ services:
         depends_on: 
             - api
             - react-app
+        profiles: ["base"]
+
+        

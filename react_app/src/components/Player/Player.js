@@ -10,9 +10,15 @@ export default function Player() {
     React.useEffect(() => {
       fetchData();
     }, []);
-    
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path: '' })
+    };
+
     const fetchData = () => {
-      fetch(api_base)
+      fetch(api_base, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           setSources(data);
